@@ -34,7 +34,7 @@ module.exports = {
   },
   
   plugins: [
-    new ForkTsCheckerWebpackPlugin(),
+    //new ForkTsCheckerWebpackPlugin(),
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       title: "Development"

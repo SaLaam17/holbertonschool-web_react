@@ -1,3 +1,4 @@
+//1. Let's build a Teacher interface
 interface Teacher {
   readonly firstName: string; //can only be set during initialization of an object of this interface
   readonly lastName: string; //can only be set during initialization of an object of this interface
@@ -20,6 +21,9 @@ const teacher1: Teacher = {
   contract: true,
 }
 
+console.log(teacher1);
+
+//2. Extending the Teacher class
 interface Directors extends Teacher {
   numberOfReports: number;
 }
@@ -31,13 +35,46 @@ const director1: Directors = {
   fullTimeEmployee: true,
   numberOfReports: 17,
 };
+console.log(director1);
 
+//3. Printing teachers
 interface printTeacherFunction {
   (firstName: string, lastName: string): string;
 }
 
-const printTeacher: printTeacherFunction = (firstname, lastname) => {
-  return `${firstname.charAt(0)}. ${lastname}`;
+const printTeacher: printTeacherFunction = (firstName, lastName) => {
+  return `${firstName.charAt(0)}. ${lastName}`;
 }
 
-console.log(printTeacher("John", "Doe")); // J. Doe
+console.log(printTeacher("John", "Doe"));
+
+//4. Writing a class
+interface StudentClassInterface {
+  firstName: string;
+  lastName: string;
+  displayName(): string;
+  workOnHomework(): string;
+}
+
+class StudentClass implements StudentClassInterface {
+  firstName: string;
+  lastName: string;
+
+  constructor(firstName: string, lastName: string) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+  }
+
+  workOnHomework(): string {
+    return "Currently working";
+  }
+
+  displayName(): string {
+    return this.firstName;
+  }
+}
+
+const stud: StudentClass = new StudentClass("Sam", "Lescasse");
+
+console.log(stud.displayName());
+console.log(stud.workOnHomework());
