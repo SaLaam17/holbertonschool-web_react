@@ -49,3 +49,25 @@ console.log(createEmployee(200) instanceof Teacher ? "Teacher" : "Director");
 console.log(createEmployee(1000) instanceof Director ? "Director" : "Teacher");
 console.log(createEmployee("$500") instanceof Director ? "Director" : "Teacher");
 
+// 6. Creating functions specific to employees
+
+function isDirector(employee: Teacher | Director): employee is Director  {
+  return employee instanceof Director;
+}
+
+function executeWork(employee: Teacher | Director): void {
+  console.log(isDirector(employee) ? employee.workDirectorTasks() : employee.workTeacherTasks());
+}
+
+executeWork(createEmployee(200));
+executeWork(createEmployee(1000));
+
+// 7. String literal types
+type Subjects = "Math" | "History";
+
+function teachClass(todayClass: Subjects): string {
+  return todayClass === "Math" ? "Teaching Math" : "Teaching History";
+  }
+
+  console.log(teachClass("Math")); 
+  console.log(teachClass("History")); 
